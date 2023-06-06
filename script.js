@@ -1,6 +1,3 @@
-console.log("boas e q ta tudo");
-console.log("fds n funciona pq");
-
 const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -55,11 +52,28 @@ function getPlayerChoice(){
 }
 
 function game(){
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    console.log("welcome!")
     for (let i = 0; i < 5; i++) {
-        const playerSelection = "rock";
+        const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
         console.log(playRound(playerSelection, computerSelection));
+        console.log("--------");
+        if (checkWinner(playerSelection, computerSelection) == "player"){
+        scorePlayer++;
+    } else if(checkWinner(playerSelection, computerSelection) == "computer"){
+        scoreComputer++;
+    }
+    }
+    if(scorePlayer > scoreComputer){
+        console.log("Player was the winner");
+    }
+    else if(scorePlayer < scoreComputer){
+        console.log("Computer was the winner")
+    }
+    else {
+        console.log("its a tie!")
     }
 }
 
